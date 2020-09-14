@@ -38,6 +38,14 @@ list_of_locations = [{  "city": "Heiden",
                     {  "city": "Raesfeld",
                         "street": "",
                         "house_number": 0
+                    },
+                    {  "city": "Suedlohn",
+                        "street": "",
+                        "house_number": 0
+                    },
+                    {  "city": "Heek",
+                        "street": "",
+                        "house_number": 0
                     }
 ]
 
@@ -50,7 +58,11 @@ meetingLocations = [MeetingLocation(city = location["city"], street = location["
 gdc.getMatrix(members, meetingLocations)
 
 durations = gdc.getDurationsMinutes()
-distances = gdc.matrix['distances']
+distances = gdc.getDistancesKm()
 
-print(durations)
-print(distances)
+totalDurations = gdc.calculateTotalTime()
+totalDistances = gdc.calculateTotalDistance()
+
+for (location, i) in zip(meetingLocations, range(len(meetingLocations))):
+    padding = " " * (12 - len(location.city))
+    print(f"{location.city}: {padding}{totalDurations[i]} min / {totalDistances[i]} km")

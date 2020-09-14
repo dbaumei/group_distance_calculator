@@ -6,6 +6,8 @@ import json
 class GroupDistanceCalculator:
 
     matrix = None
+    durationsMinutes = []
+    distancesKm = []
 
     def __init__(self, key: str):
         self.client = ors.Client(key = key)
@@ -29,10 +31,26 @@ class GroupDistanceCalculator:
                                     )
 
     def calculateTotalTime(self):
-        pass
+        durations = self.matrix['durations']
+        sums = [0.0] * len(durations[0])
+
+        for sublistIndex in range(len(durations)):
+            for elementIndex in range(len(durations[0])):
+                sums[elementIndex] += durations[sublistIndex][elementIndex]
+        
+        self.totalDurationsMinutes = [round(element / 60.0) for element in sums]
+        return self.totalDurationsMinutes
 
     def calculateTotalDistance(self):
-        pass
+        distances = self.matrix['distances']
+        sums = [0.0] * len(distances[0])
+
+        for sublistIndex in range(len(distances)):
+            for elementIndex in range(len(distances[0])):
+                sums[elementIndex] += distances[sublistIndex][elementIndex]
+        
+        self.totalDistancesKm = [round(element / 1000.0) for element in sums]
+        return self.totalDistancesKm
 
     def getMemberGeocodes(self, members: []):
         geocodes = [member.getGeocode(self.client) for member in members]
@@ -44,13 +62,18 @@ class GroupDistanceCalculator:
 
     def getDurationsMinutes(self):
         rawDurations = self.matrix['durations']
-        durationsMinutes = [[]]
-        print(rawDurations)
 
         for sublistIndex in range(len(rawDurations)):
-            print(f"{sublistIndex} / {len(rawDurations)}")
-            print(rawDurations[sublistIndex])
-            durationsMinutes[sublistIndex] = [round(element / 60.0) for element in rawDurations[sublistIndex]]
-        # durationsMinutes = [ for sublist in rawDurations for element in sublist]
+            sublist = [round(element / 60.0) for element in rawDurations[sublistIndex]]
+            self.durationsMinutes.append(sublist)
 
-        return durationsMinutes
+        return self.durationsMinutes
+
+    def getDistancesKm(self):
+        rawDistances = self.matrix['distances']
+
+        for sublistIndex in range(len(rawDistances)):
+            sublist = [round(element / 1000.0) for element in rawDistances[sublistIndex]]
+            self.distancesKm.append(sublist)
+
+        return self.distancesKm
