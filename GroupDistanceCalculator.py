@@ -22,7 +22,7 @@ class GroupDistanceCalculator:
 
         memberIndices = [i for i in range(len(members))]
         meetingLocationIndices = [i + memberIndices[-1] + 1 for i in range(len(meetingLocations))]
-        
+
         self.matrix = distance_matrix(  self.client,
                                         locations=locations,
                                         metrics=['distance', 'duration'],
@@ -37,7 +37,7 @@ class GroupDistanceCalculator:
         for sublistIndex in range(len(durations)):
             for elementIndex in range(len(durations[0])):
                 sums[elementIndex] += durations[sublistIndex][elementIndex]
-        
+
         self.totalDurationsMinutes = [round(element / 60.0) for element in sums]
         return self.totalDurationsMinutes
 
@@ -48,7 +48,7 @@ class GroupDistanceCalculator:
         for sublistIndex in range(len(distances)):
             for elementIndex in range(len(distances[0])):
                 sums[elementIndex] += distances[sublistIndex][elementIndex]
-        
+
         self.totalDistancesKm = [round(element / 1000.0) for element in sums]
         return self.totalDistancesKm
 

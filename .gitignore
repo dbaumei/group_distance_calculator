@@ -1,5 +1,6 @@
-# API Token files
-ors.token
+# Project specific
+ors.key
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
