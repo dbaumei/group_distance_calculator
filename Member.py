@@ -4,16 +4,30 @@ from statistics import mean
 
 class Member:
 
-    def __init__(self, name: str, city: str):
-        self.name = name
-        self.city = city
-    
-    def getGeocode(self, client: ors.Client):
-        pelias_search_result = client.pelias_search(text = f"{self.city}, Germany", size = 1)
-        # bbox = pelias_search_result['bbox']
-        # lon = mean([bbox[0], bbox[2]])
-        # lat = mean([bbox[1], bbox[3]])
-        # self.geocode = [lon, lat]
-        self.geocode = pelias_search_result['features'][0]['geometry']['coordinates']
+    COUNTRY = "Germany"
+
+    def __init__(self, client: ors.Client, line: str):
+        raw_data = json.loads(line)
+
+        self.name = raw_data['name']
+        self.city = raw_data['city']
+        self.postal_code = raw_data['postal_code']
+        self.street = raw_data['street']
+        self.house_number = raw_data['house_number']
+        self.client = client
+
+        self.geocode = []
+
+    def getGeocode(self):
+        if not self.geocode:
+            pelias_search_result = self.client.pelias_search(text = f"{self.city}, {Member.COUNTRY}", size = 1)
+            # bbox = pelias_search_result['bbox']
+            # lon = mean([bbox[0], bbox[2]])
+            # lat = mean([bbox[1], bbox[3]])
+            # self.geocode = [lon, lat]
+            self.geocode = pelias_search_result['features'][0]['geometry']['coordinates']
+
         return self.geocode
-        
+
+    def __str__(self):
+        return f"Member: {self.name}: {self.city}"

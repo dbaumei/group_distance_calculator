@@ -5,7 +5,7 @@ from statistics import mean
 class MeetingLocation:
 
     def __init__(self, city: str, street: str = "", house_number: int = 0, country: str = "Germany"):
-        
+
         # Bare minimum: city must be defined
         if city == "":
             raise ValueError("city must not be empty.")
@@ -29,4 +29,3 @@ class MeetingLocation:
         lat = mean([bbox[1], bbox[3]])
         self.geocode = [lon, lat]
         return self.geocode
-        

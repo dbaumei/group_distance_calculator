@@ -52,13 +52,13 @@ class GroupDistanceCalculator:
         self.totalDistancesKm = [round(element / 1000.0) for element in sums]
         return self.totalDistancesKm
 
-    def getMemberGeocodes(self, members: []):
-        geocodes = [member.getGeocode(self.client) for member in members]
-        return geocodes
+    # def getMemberGeocodes(self, members: []):
+    #     geocodes = [member.getGeocode(self.client) for member in members]
+    #     return geocodes
 
-    def getMeetingLocationGeocodes(self, meetingLocations: []):
-        geocodes = [meetingLocation.getGeocode(self.client) for meetingLocation in meetingLocations]
-        return geocodes
+    # def getMeetingLocationGeocodes(self, meetingLocations: []):
+    #     geocodes = [meetingLocation.getGeocode(self.client) for meetingLocation in meetingLocations]
+    #     return geocodes
 
     def getDurationsMinutes(self):
         rawDurations = self.matrix['durations']
