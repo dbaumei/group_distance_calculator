@@ -8,6 +8,8 @@ pylint = "*"
 
 [packages]
 openrouteservice = "*"
+pytest = "*"
+pytest-check = "*"
 
 [requires]
 python_version = "3.8"
