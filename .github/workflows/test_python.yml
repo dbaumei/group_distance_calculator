@@ -28,8 +28,8 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Make secret available
       run: 'echo "$ORS_KEY" > ors.key'
-        shell: bash
-        env:
+      shell: bash
+      env:
           ORS_KEY: ${{secrets.ORS_KEY}}
     - name: Test with pytest
       run: |
