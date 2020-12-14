@@ -4,9 +4,7 @@ import re
 
 
 class Address:
-    """Store information about a location. This is a base class and not meant to be implemented directly.
-
-    """
+    """Store information about a location. This is a base class and not meant to be implemented directly."""
 
     def __init__(self, client: ors.Client, line: str):
         """Implement the Address class.

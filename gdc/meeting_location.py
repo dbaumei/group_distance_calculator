@@ -3,10 +3,17 @@ import openrouteservice as ors
 
 
 class MeetingLocation(Address):
+    """Store information about a meeting location. Is a subclass of ``Address``.
+
+    Attributes:
+        COUNTRY (str): Default country for the meeting location's address.
+
+    """
 
     COUNTRY = "Germany"
 
     def __str__(self):
+        """Return string representation of the MeetingLocation class."""
         return f"MeetingLocation: {self.name}, {self.city}"
 
     def __init__(self, client: ors.Client, line: str):

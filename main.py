@@ -6,13 +6,8 @@ from os import path
 
 #TODO
 # Generate hashes for locations and store them with the data in /data or so
-# Get more adresses for meeting locations
-# Calculate separate distances and times
-# Aggregate distances and times
 # Add JSON validation
 # Write unit tests
-# Automate tests with GH Actions
-# Figure out how to get secrets into GH Action (API token)
 
 
 key_path = "./ors.key"

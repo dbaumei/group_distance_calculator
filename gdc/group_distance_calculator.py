@@ -8,9 +8,15 @@ from typing import Dict, List
 
 
 class GroupDistanceCalculator:
-    """TBD
+    """Calculate the total distance and duration it takes multiple people to arrive at given meeting locations.
+
+    Attributes:
+        client: ORS client.
+        members: List of objects of the Member class.
+        meeting_locations: List of objects of the MeetingLocation class.
 
     """
+
     def __init__(self, client: ors.Client, members: List[Member], meeting_locations: List[MeetingLocation]):
         """Implement the GroupDistanceCalculator class.
 
@@ -28,6 +34,8 @@ class GroupDistanceCalculator:
     def getMatrix(self) -> distance_matrix:
         """Take the geocodes of members and meeting locations and fetches the time/distance matrix.
 
+        Returns:
+            matrix: Elements are dicts with keys 'distance' and 'duration'.
         """
         locations = [member.getGeocode() for member in self.members]
         locations.extend([meeting_location.getGeocode() for meeting_location in self.meeting_locations])
