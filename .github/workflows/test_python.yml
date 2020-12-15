@@ -17,9 +17,16 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
+      id: install_dependencies
       run: |
         pip3 install pipenv flake8
         pipenv install
+    - name: Upload Pipfile.lock
+      uses: actions/upload-artifact@v2
+      with:
+        name: Pipfile.lock.python${{ matrix.python-version }}
+        path: Pipfile.lock
+        retention-days: 30
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
