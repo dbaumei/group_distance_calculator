@@ -3,12 +3,12 @@ name: Python package
 on: [push]
 
 jobs:
-  build:
+  Build_and_run_Tests:
 
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.8, 3.9]
 
     steps:
     - uses: actions/checkout@v2
@@ -30,7 +30,7 @@ jobs:
       run: 'echo "$ORS_KEY" > ors.key'
       shell: bash
       env:
-          ORS_KEY: ${{secrets.ORS_KEY}}
+          ORS_KEY: ${{ secrets.ORS_KEY }}
     - name: Test with pytest
       run: |
         pipenv run python3 -m pytest .
