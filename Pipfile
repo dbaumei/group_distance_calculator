@@ -11,6 +11,3 @@ openrouteservice = "*"
 pytest = "*"
 pytest-check = "*"
 pydocstyle = "*"
-
-[requires]
-python_version = "3.8"
