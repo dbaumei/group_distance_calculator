@@ -14,9 +14,9 @@ To use this program, install Python 3.8 or higher and pip3 with
 sudo apt install python3 python3-pip
 ```
 
-Then, install
+Then, install `pipenv` with
 
-`pipenv`
+`pip3 install pipenv`
 
 and change to the directory of this repository.
 
