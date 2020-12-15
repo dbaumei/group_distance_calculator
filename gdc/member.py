@@ -20,8 +20,8 @@ class Member(Address):
         """Store information about a member location.
 
         Args:
-            client (ors.Client): Client to perform the API queries with.
-            line (str): Line of data from NDJSON of members.
+            client: Client to perform the API queries with.
+            line: Line of data from NDJSON of members.
 
         Raises:
             ValueError: If city is empty.

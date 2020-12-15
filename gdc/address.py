@@ -1,5 +1,5 @@
-import openrouteservice as ors
 import json
+import openrouteservice as ors
 import re
 
 
@@ -7,11 +7,11 @@ class Address:
     """Store information about a location. This is a base class and not meant to be implemented directly."""
 
     def __init__(self, client: ors.Client, line: str):
-        """Implement the Address class.
+        """Implement the ``Address`` class.
 
         Args:
-            client (ors.Client): Client to perform the API queries with.
-            line (str): Line of data from NDJSON with address information.
+            client: Client to perform the API queries with.
+            line: Line of data from NDJSON with address information.
 
         Raises:
             ValueError: If city is empty.
@@ -54,7 +54,6 @@ class Address:
             str: Address formatted as Street Housenumber, Postalcode City, Country
 
         """
-        address = ""
         if self.street:
             if self.housenumber:
                 address = f"{self.street} {self.housenumber}, {self.city}, {self.country}"

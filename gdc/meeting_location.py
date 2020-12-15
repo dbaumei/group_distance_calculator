@@ -13,15 +13,15 @@ class MeetingLocation(Address):
     COUNTRY = "Germany"
 
     def __str__(self):
-        """Return string representation of the MeetingLocation class."""
+        """Return string representation of the ``MeetingLocation`` class."""
         return f"MeetingLocation: {self.name}, {self.city}"
 
     def __init__(self, client: ors.Client, line: str):
         """Store information about a meeting location.
 
         Args:
-            client (ors.Client): Client to perform the API queries with.
-            line (str): Line of data from NDJSON of meeting locations.
+            client: Client to perform the API queries with.
+            line: Line of data from NDJSON of meeting locations.
 
         Raises:
             ValueError: If city is empty.

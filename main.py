@@ -4,11 +4,6 @@ import openrouteservice as ors
 from openrouteservice.distance_matrix import distance_matrix
 from os import path
 
-#TODO
-# Generate hashes for locations and store them with the data in /data or so
-# Add JSON validation
-# Write unit tests
-
 
 key_path = "./ors.key"
 members_path = "./data/members.ndjson"
