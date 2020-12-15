@@ -1,3 +1,8 @@
+# Project specific
+ors.key
+.vscode/
+Pipfile.lock
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
